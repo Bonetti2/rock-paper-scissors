@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
     <!-- <link rel="stylesheet" href="styles.css"> -->
+<body>
+    Please, open the console (ctrl+shift+k), type "game()" and press enter. That will start the game.
+</body>
+
 <script>
     
     let hands = ['rock', 'paper','scissors'];
@@ -61,6 +65,10 @@
         else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection.toUpperCase() == 'SCISSORS') {
             ++computerScore;
             return 'Scissors beats paper. You lose.'
+        }
+
+        else {
+            return 'Please, choose between Rock, Paper or Scissors.'
         }
     }
 
@@ -290,6 +298,10 @@
             console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
         }
 
+        if (playerScore < 5 && computerScore < 5) {
+            return 'The game should not be this long. Please, refresh the page and try again.'
+        }
+
         else if (playerScore == 5) {
             return 'Congratulations! What a victory!'
         }
@@ -297,8 +309,6 @@
         else if (computerScore == 5) {
             return 'Sorry, but Computer has beaten you...'
         }
-
-
         
     }
 
