@@ -15,8 +15,8 @@
         <button id="scissors">Scissors</button>
     </div>
     <p id="roundResult">Display the result of the round</p>
-    <p id="playerScore">Player Score: </p>
-    <p id="computerScore">Computer Score: </p>
+    <p id="playerScore">Player Score: 0</p>
+    <p id="computerScore">Computer Score: 0</p>
 
     
 </body>
@@ -34,10 +34,11 @@
     
     
     
-    let playerScore
-    let computerScore
-    let playerSelection
-
+    let playerScore = 0
+    let computerScore = 0
+    const roundResult = document.querySelector('#roundResult')
+    const computerScoreDisplay = document.querySelector('#computerScore')
+    const playerScoreDisplay = document.querySelector('#playerScore')
     const buttons = document.querySelectorAll('button')
 
     console.log(buttons)
@@ -58,7 +59,6 @@
         
         
     
-            // O PRÓXIMO PASSO PARECE SER INCLUIR DENTRO DA FUNÇÃO ABAIXO, ANTES DAS RODADAS, UM IF EXTERNO PRA SÓ FUNCIONAR CASO OS PLACARES SEJAM MENORES QUE 5
 
     function playRound(e) {
         
@@ -68,76 +68,70 @@
         console.log(computerSelection)
         console.log(playerSelection)
 
-        const roundResult = document.querySelector('#roundResult')
+
+        if (computerScore < 5 && playerScore < 5) {
+
+
+            console.log(computerScore)
+            console.log(playerScore)
+           
+            if (playerSelection === computerSelection) {
+                roundResult.textContent = 'Computer also chose ' + computerSelection + '. This is a tie!'
+            }
+
+            else if (playerSelection == 'rock' && computerSelection == 'paper') {
+                roundResult.textContent = 'Computer chose ' + computerSelection + '. Paper beats rock. You lose.'
+                computerScore++;
+                computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
+            }
+
+            else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+                roundResult.textContent = 'Computer chose ' + computerSelection + '. Rock beats scissors. You win.'
+                playerScore++;
+                playerScoreDisplay.textContent = 'Player Score: ' + playerScore;
+            }
         
-        if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
-            roundResult.textContent = 'Computer also chose ' + computerSelection + '. This is a tie!'
-        }
+            
+            else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+                roundResult.textContent = 'Computer chose ' + computerSelection + '. Scissors beats paper. You win.'
+                playerScore++;
+                playerScoreDisplay.textContent = 'Player Score: ' + playerScore;
+            }
 
-        else if (playerSelection.toUpperCase() == 'ROCK' && computerSelection.toUpperCase() == 'PAPER') {
-            ++computerScore;
-            roundResult.textContent = 'Computer chose ' + computerSelection + '. Paper beats rock. You lose.'
-        }
+            else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+                roundResult.textContent = 'Computer chose ' + computerSelection + '. Rock beats scissors. You lose.'
+                computerScore++;
+                computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
+            }
 
-        else if (playerSelection.toUpperCase() == 'ROCK' && computerSelection.toUpperCase() == 'SCISSORS') {
-            ++playerScore;
-            roundResult.textContent = 'Computer chose ' + computerSelection + '. Rock beats scissors. You win.'
-        }
-        
-        else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection.toUpperCase() == 'PAPER') {
-            ++playerScore;
-            roundResult.textContent = 'Computer chose ' + computerSelection + '. Scissors beats paper. You win.'
-        }
+            else if (playerSelection == 'paper' && computerSelection == 'rock') {
+                roundResult.textContent = 'Computer chose ' + computerSelection + '. Paper beats rock. You win.'
+                playerScore++;
+                playerScoreDisplay.textContent = 'Player Score: ' + playerScore;
+            }
 
-        else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection.toUpperCase() == 'ROCK') {
-            ++computerScore;
-            roundResult.textContent = 'Computer chose ' + computerSelection + '. Rock beats scissors. You lose.'
-        }
+            else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+                roundResult.textContent = 'Computer chose ' + computerSelection + '. Scissors beats paper. You lose.'
+                computerScore++;
+                computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
+            }
 
-        else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection.toUpperCase() == 'PAPER') {
-            ++playerScore;
-            roundResult.textContent = 'Computer chose ' + computerSelection + '. Scissors beats paper. You win.'
-        }
+            if (computerScore == 5) {
+                alert('Computer wins!')
+                computerScore = 0
+                playerScore = 0
+                computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
+                playerScoreDisplay.textContent = 'Player Score: ' + playerScore;
+            }
 
-        else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection.toUpperCase() == 'ROCK') {
-            ++playerScore;
-            roundResult.textContent = 'Computer chose ' + computerSelection + '. Paper beats rock. You win.'
-        }
-
-        else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection.toUpperCase() == 'SCISSORS') {
-            ++computerScore;
-            roundResult.textContent = 'Computer chose ' + computerSelection + '. Scissors beats paper. You lose.'
-        }
-
-        else {
-            roundResult.textContent = 'Please, choose between Rock, Paper or Scissors.'
-        }
-    }
-
-    function game() {
-        
-        playerScore = 0;
-        computerScore = 0;
-
-        console.log(playRound(prompt('Make your choice:')))
-        console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        console.log(playRound(prompt('Make your choice:')))
-        console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        console.log(playRound(prompt('Make your choice:')))
-        console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        console.log(playRound(prompt('Make your choice:')))
-        console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        console.log(playRound(prompt('Make your choice:')))
-        console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-    }
-
-        
-
-
+            if (playerScore == 5) {
+                alert('Player wins!')
+                computerScore = 0
+                playerScore = 0
+                computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
+                playerScoreDisplay.textContent = 'Player Score: ' + playerScore;
+            }
+    } //closes 'if'
+} //closes whole function
 
 </script>
