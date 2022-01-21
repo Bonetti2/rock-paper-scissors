@@ -5,70 +5,112 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="styles.css">
 <body>
-    Please, open the console (ctrl+shift+k for Firefox, ctrl+shift+j for Chrome), type "game()" and press enter. That will start the game.
+    <h1>ROCK PAPER SCISSORS</h1>
+    <h2>Rules about the game</h2>
+    <div class="buttonsDiv">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <p id="roundResult">Display the result of the round</p>
+    <p id="playerScore">Player Score: </p>
+    <p id="computerScore">Computer Score: </p>
+
+    
 </body>
 
 <script>
     
+
+
+
     let hands = ['rock', 'paper','scissors'];
-    let playerScore
-    let computerScore
-   
-    const playerSelection = 'rock'
-    // const computerSelection = computerPlay()
-
-
+    
     function computerPlay() {
         return hands[Math.random() * hands.length | 0];
     }
+    
+    
+    
+    let playerScore
+    let computerScore
+    let playerSelection
 
-    function playRound(playerSelection, computerSelection) {
+    const buttons = document.querySelectorAll('button')
+
+    console.log(buttons)
+
+    // buttons.forEach(item => {
+    //     item.addEventListener('click', e => {console.log(e.target.id)})}) //IT WORKS
+
+        // buttons.forEach(item => {
+        // item.addEventListener('click', e => {playerSelection = e.target.id})}) //IT WORKS
+
+
+   
+    
+
+        buttons.forEach(item => {
+        item.addEventListener('click', playRound)})
+        
+        
+        
+    
+            // O PRÓXIMO PASSO PARECE SER INCLUIR DENTRO DA FUNÇÃO ABAIXO, ANTES DAS RODADAS, UM IF EXTERNO PRA SÓ FUNCIONAR CASO OS PLACARES SEJAM MENORES QUE 5
+
+    function playRound(e) {
         
         computerSelection = computerPlay();
+        playerSelection = e.target.id
+
+        console.log(computerSelection)
+        console.log(playerSelection)
+
+        const roundResult = document.querySelector('#roundResult')
         
         if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
-            return 'This is a tie!'
+            roundResult.textContent = 'Computer also chose ' + computerSelection + '. This is a tie!'
         }
 
         else if (playerSelection.toUpperCase() == 'ROCK' && computerSelection.toUpperCase() == 'PAPER') {
             ++computerScore;
-            return 'Paper beats rock. You lose.'
+            roundResult.textContent = 'Computer chose ' + computerSelection + '. Paper beats rock. You lose.'
         }
 
         else if (playerSelection.toUpperCase() == 'ROCK' && computerSelection.toUpperCase() == 'SCISSORS') {
             ++playerScore;
-            return 'Rock beats scissors. You win.'
+            roundResult.textContent = 'Computer chose ' + computerSelection + '. Rock beats scissors. You win.'
         }
         
         else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection.toUpperCase() == 'PAPER') {
             ++playerScore;
-            return 'Scissors beats paper. You win.'
+            roundResult.textContent = 'Computer chose ' + computerSelection + '. Scissors beats paper. You win.'
         }
 
         else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection.toUpperCase() == 'ROCK') {
             ++computerScore;
-            return 'Rock beats scissors. You lose.'
+            roundResult.textContent = 'Computer chose ' + computerSelection + '. Rock beats scissors. You lose.'
         }
 
         else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection.toUpperCase() == 'PAPER') {
             ++playerScore;
-            return 'Scissors beats paper. You win.'
+            roundResult.textContent = 'Computer chose ' + computerSelection + '. Scissors beats paper. You win.'
         }
 
         else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection.toUpperCase() == 'ROCK') {
             ++playerScore;
-            return 'Paper beats rock. You win.'
+            roundResult.textContent = 'Computer chose ' + computerSelection + '. Paper beats rock. You win.'
         }
 
         else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection.toUpperCase() == 'SCISSORS') {
             ++computerScore;
-            return 'Scissors beats paper. You lose.'
+            roundResult.textContent = 'Computer chose ' + computerSelection + '. Scissors beats paper. You lose.'
         }
 
         else {
-            return 'Please, choose between Rock, Paper or Scissors.'
+            roundResult.textContent = 'Please, choose between Rock, Paper or Scissors.'
         }
     }
 
@@ -92,225 +134,9 @@
             console.log(playRound(prompt('Make your choice:')))
             console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
         }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            console.log(playRound(prompt('Make your choice:')))
-            console.log('Player score is ' + playerScore + ' and Computer score is ' + computerScore + ".")
-        }
-
-        if (playerScore < 5 && computerScore < 5) {
-            return 'The game should not be this long. Please, refresh the page and try again.'
-        }
-
-        else if (playerScore == 5) {
-            return 'Congratulations! What a victory!'
-        }
-        
-        else if (computerScore == 5) {
-            return 'Sorry, but Computer has beaten you...'
-        }
-        
     }
+
+        
 
 
 
