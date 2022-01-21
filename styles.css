@@ -1,13 +1,43 @@
 body {
     text-align: center;
+    background-image:url(https://pt.pokerdiscover.com/media/blog/2017/01/rock-paper-scissor-ft-1.jpg);
+    background-size:100%;
+
 }
 
-div {
-    align-items: center;
-    justify-content: center;
+#bigDiv {
+    background: rgba(250, 230, 207, 0.836);
+    max-width: fit-content;
+    margin: auto;
+    border-radius: 35px;
+    padding: 10px;
+}
+
+#computerScore {
+    padding-bottom: 20px;
+}
+
+button {
+    border:none;
+    border-radius: 5px;
+    margin: 0 10px;
+    padding: 5px 10px;
+    color: whitesmoke;
+    font-size: large;
+}
+
+#rock {
+    background: rgb(126, 47, 47);
+}
+
+#paper {
+    background: rgb(9, 9, 121);
+}
+
+#scissors {
+    background: rgb(23, 102, 23);
 }
 
 #roundResult {
-    align-items: center;
-    justify-content: center;
+    font-weight: bold;
 }
