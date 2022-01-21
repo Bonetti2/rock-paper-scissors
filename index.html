@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="styles.css">
 <body>
     <h1>ROCK PAPER SCISSORS</h1>
-    <h2>Rules about the game</h2>
+    <h2>The first to reach 5 points wins the game.</h2>
     <div class="buttonsDiv">
         <button id="rock">Rock</button>
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
     </div>
-    <p id="roundResult">Display the result of the round</p>
+    <p id="roundResult">Let's go!</p>
     <p id="playerScore">Player Score: 0</p>
     <p id="computerScore">Computer Score: 0</p>
 
@@ -117,7 +117,7 @@
             }
 
             if (computerScore == 5) {
-                alert('Computer wins!')
+                roundResult.textContent = 'COMPUTER WINS! It\'s beaten you with ' + computerScore + ' points against ' + playerScore + '. But you can do better! One more time?'
                 computerScore = 0
                 playerScore = 0
                 computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
@@ -125,11 +125,12 @@
             }
 
             if (playerScore == 5) {
-                alert('Player wins!')
+                roundResult.textContent = 'YOU WIN! You scored ' + playerScore + ' points against Computer\'s ' + computerScore + ' points. What about one more victory?'
                 computerScore = 0
                 playerScore = 0
                 computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
                 playerScoreDisplay.textContent = 'Player Score: ' + playerScore;
+                
             }
     } //closes 'if'
 } //closes whole function

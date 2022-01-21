@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+}
+
+div {
+    align-items: center;
+    justify-content: center;
+}
+
+#roundResult {
+    align-items: center;
+    justify-content: center;
+}
