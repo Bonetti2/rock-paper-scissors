@@ -49,9 +49,12 @@
     
     buttons.forEach(item => {
     item.addEventListener('click', playRound)})
+
+    // window.addEventListener('keydown', e => {
+    //     if (e.key == 'r') {playRound(e.target = 'rock')}
+    // })
         
-        
-        
+    
     
 
     function playRound(e) {
@@ -107,7 +110,7 @@
             }
 
             if (computerScore == 5) {
-                roundResult.textContent = 'COMPUTER WINS! It\'s beaten you with ' + computerScore + ' points against ' + playerScore + '. But you can do better! One more time?'
+                roundResult.textContent = 'COMPUTER WINS! \n It\'s beaten you with ' + computerScore + ' points against ' + playerScore + '. But you can do better! One more time?'
                 computerScore = 0
                 playerScore = 0
                 computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
@@ -115,7 +118,7 @@
             }
 
             if (playerScore == 5) {
-                roundResult.textContent = 'YOU WIN! You scored ' + playerScore + ' points against Computer\'s ' + computerScore + ' points. What about one more victory?'
+                roundResult.textContent = 'YOU WIN! \n You scored ' + playerScore + ' points against Computer\'s ' + computerScore + ' points. What about one more victory?'
                 computerScore = 0
                 playerScore = 0
                 computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;

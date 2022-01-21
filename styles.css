@@ -11,6 +11,7 @@ body {
     margin: auto;
     border-radius: 35px;
     padding: 10px;
+    border-style:double;
 }
 
 #computerScore {
@@ -24,20 +25,51 @@ button {
     padding: 5px 10px;
     color: whitesmoke;
     font-size: large;
+    cursor:pointer;
+}
+
+button:hover {
+    scale: 1.2;
+    transition: 0.1s;
+}
+
+button:hover:after {
+    transition: 0.3s;
+}
+
+button:active {
+    scale: 1.3;
+    box-shadow: 0 0 1rem #010303;
 }
 
 #rock {
     background: rgb(126, 47, 47);
+    box-shadow: 0 0 0.5rem rgb(126, 47, 47);
 }
 
 #paper {
     background: rgb(9, 9, 121);
+    box-shadow: 0 0 0.5rem rgb(9, 9, 121);
 }
 
 #scissors {
     background: rgb(23, 102, 23);
+    box-shadow: 0 0 0.5rem rgb(23, 102, 23);
+}
+
+#rock:hover {
+    box-shadow: 0 0 1rem rgb(126, 47, 47);
+}
+
+#paper:hover {
+    box-shadow: 0 0 1rem rgb(9, 9, 121);
+}
+
+#scissors:hover {
+    box-shadow: 0 0 1rem rgb(23, 102, 23);
 }
 
 #roundResult {
     font-weight: bold;
+    word-wrap:normal;
 }
