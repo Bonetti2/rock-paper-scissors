@@ -79,6 +79,7 @@ button:active {
 
 #roundResult {
     font-weight: bold;
+    text-overflow: clip;
 }
 
 #finalResult {
