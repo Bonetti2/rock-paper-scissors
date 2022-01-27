@@ -23,9 +23,11 @@ button {
     border-radius: 5px;
     margin: 0 10px;
     padding: 5px 10px;
-    color: whitesmoke;
+    color: rgb(255, 253, 131);
     font-size: large;
     cursor:pointer;
+    background-color: rgb(85, 48, 27);
+    box-shadow: 0 0 0.5rem rgb(233, 180, 5);
 }
 
 button:hover {
@@ -45,16 +47,19 @@ button:active {
 #rock {
     background: rgb(126, 47, 47);
     box-shadow: 0 0 0.5rem rgb(126, 47, 47);
+    color: whitesmoke;
 }
 
 #paper {
     background: rgb(9, 9, 121);
     box-shadow: 0 0 0.5rem rgb(9, 9, 121);
+    color: whitesmoke;
 }
 
 #scissors {
     background: rgb(23, 102, 23);
     box-shadow: 0 0 0.5rem rgb(23, 102, 23);
+    color: whitesmoke;
 }
 
 #rock:hover {
@@ -71,5 +76,16 @@ button:active {
 
 #roundResult {
     font-weight: bold;
-    word-wrap:normal;
+    /* font-size: 17px; */
+}
+
+#finalResult {
+    font-weight: bold;
+    /* font-size: 18px; */
+    white-space: pre;
+}
+
+#bottom {
+    color: rgb(124, 80, 38);
+    margin-bottom;
 }

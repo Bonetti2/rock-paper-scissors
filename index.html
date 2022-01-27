@@ -11,17 +11,20 @@
         <h1>ROCK PAPER SCISSORS</h1>
         <h2>The first to reach 5 points wins the game.</h2>
         <div class="buttonsDiv">
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissors">Scissors</button>
+            <button id="rock" class="playButton">Rock</button>
+            <button id="paper" class="playButton">Paper</button>
+            <button id="scissors" class="playButton">Scissors</button>
         </div>
         <p id="roundResult">Let's go!</p>
+        <p id="finalResult"></p>
         <p id="playerScore">Player Score: 0</p>
         <p id="computerScore">Computer Score: 0</p>
         <div style="display: block;">In case you don't remember the rules:</div>
         <img style="max-width: 600px; width: 100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Rock-paper-scissors.svg/1200px-Rock-paper-scissors.svg.png">
+        <div id="bottom">
+            Copyright ® The Odin Project 2022 & bonetti2
+        </div>
     </div>
-
     
 </body>
 
@@ -35,26 +38,56 @@
     
     let playerScore = 0
     let computerScore = 0
+    const finalResult = document.querySelector('#finalResult')
     const roundResult = document.querySelector('#roundResult')
     const computerScoreDisplay = document.querySelector('#computerScore')
     const playerScoreDisplay = document.querySelector('#playerScore')
-    const buttons = document.querySelectorAll('button')
-
-
-    // buttons.forEach(item => {
-    //     item.addEventListener('click', e => {console.log(e.target.id)})}) //IT WORKS
-
-        // buttons.forEach(item => {
-        // item.addEventListener('click', e => {playerSelection = e.target.id})}) //IT WORKS
+    const buttons = document.querySelectorAll('#rock, #paper, #scissors')
+    const rockId = document.getElementById('rock') // WORKS
+    const paperId = document.getElementById('paper')
+    const scissorsId = document.getElementById('scissors')
     
     buttons.forEach(item => {
     item.addEventListener('click', playRound)})
 
-    // window.addEventListener('keydown', e => {
-    //     if (e.key == 'r') {playRound(e.target = 'rock')}
-    // })
-        
-    
+    function newGame() {
+        rockId.style = 'display: none'
+        paperId.style = 'display: none'
+        scissorsId.style = 'display: none'    
+        const newButton1 = document.createElement('button')
+        const newButton2 = document.createElement('button')
+        newButton1.innerText = 'Yes'
+        newButton2.innerText = 'No'
+        newButton1.setAttribute('id', 'yesButton')
+        newButton2.setAttribute('id', 'noButton')
+        computerScoreDisplay.appendChild(newButton1)
+        computerScoreDisplay.appendChild(newButton2)
+        const newButtons = document.querySelectorAll('#yesButton', '#noButton')
+
+        newButtons.forEach(item => addEventListener('click', e => {
+            if (e.target.id == 'yesButton') {
+                computerScoreDisplay.removeChild(newButton1);
+                computerScoreDisplay.removeChild(newButton2);
+                playerScore = 0
+                computerScore = 0
+                computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
+                playerScoreDisplay.textContent = 'Player Score: ' + playerScore;
+                finalResult.textContent = ""
+                roundResult.textContent = "Do it!"
+                rockId.style = 'display: '
+                paperId.style = 'display: '
+                scissorsId.style = 'display: '   
+            }
+
+            else if (e.target.id == 'noButton') {
+                roundResult.textContent = ""
+                finalResult.textContent = 'Well, that\'s sad... Come back sometime!'
+                newButton1.innerText = 'Actually I want to play again'
+                newButton1.style = 'font-size: smaller'
+                newButton2.style = 'display: none'
+            }
+        }))
+    }
     
 
     function playRound(e) {
@@ -64,10 +97,6 @@
 
         if (computerScore < 5 && playerScore < 5) {
 
-
-            console.log(computerScore)
-            console.log(playerScore)
-           
             if (playerSelection === computerSelection) {
                 roundResult.textContent = 'Computer also chose ' + computerSelection + '. This is a tie!'
             }
@@ -110,21 +139,25 @@
             }
 
             if (computerScore == 5) {
-                roundResult.textContent = 'COMPUTER WINS! \n It\'s beaten you with ' + computerScore + ' points against ' + playerScore + '. But you can do better! One more time?'
+                roundResult.textContent = 'Computer chose ' + computerSelection + '. Scissors beats paper. You lose.'
+                finalResult.textContent = 'COMPUTER WINS! It\'s beaten you with ' + computerScore + ' points against ' + playerScore + '. \r\n But you can do better! One more time?'
                 computerScore = 0
                 playerScore = 0
-                computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
-                playerScoreDisplay.textContent = 'Player Score: ' + playerScore;
+                computerScoreDisplay.textContent = ''
+                playerScoreDisplay.textContent = ''
+                    newGame()
             }
 
             if (playerScore == 5) {
-                roundResult.textContent = 'YOU WIN! \n You scored ' + playerScore + ' points against Computer\'s ' + computerScore + ' points. What about one more victory?'
+                roundResult.textContent = 'Computer chose ' + computerSelection + '. Paper beats rock. You win.'
+                finalResult.textContent = 'YOU WIN! You scored ' + playerScore + ' points against Computer\'s ' + computerScore + ' points. \r\n What about one more victory?'
                 computerScore = 0
                 playerScore = 0
-                computerScoreDisplay.textContent = 'Computer Score: ' + computerScore;
-                playerScoreDisplay.textContent = 'Player Score: ' + playerScore;
+                computerScoreDisplay.textContent = ''
+                playerScoreDisplay.textContent = ''
+                    newGame()
             }
-    } //closes 'if'
-} //closes whole function
+        }
+    }
 
 </script>
