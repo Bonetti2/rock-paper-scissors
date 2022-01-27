@@ -2,7 +2,7 @@ body {
     text-align: center;
     background-image:url(https://pt.pokerdiscover.com/media/blog/2017/01/rock-paper-scissor-ft-1.jpg);
     background-size:100%;
-
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #bigDiv {
@@ -33,10 +33,6 @@ button {
 button:hover {
     scale: 1.2;
     transition: 0.1s;
-}
-
-button:hover:after {
-    transition: 0.3s;
 }
 
 button:active {
